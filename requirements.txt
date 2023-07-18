@@ -3,6 +3,6 @@ numpy
 seaborn
 matplotlib
 statistics
-sklearn
+scikit-learn
 
 -e .
