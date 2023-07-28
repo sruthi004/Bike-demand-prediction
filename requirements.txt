@@ -4,5 +4,6 @@ seaborn
 matplotlib
 statistics
 scikit-learn
+dill
 
 -e .
