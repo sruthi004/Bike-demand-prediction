@@ -29,14 +29,26 @@ class ModelTrainer:
     def __init__(self):
         self.model_trainer_config=ModelTrainerConfig()
 
-    def train_model(self,train_array,test_array):
+    def best_model(self,X_train,y_train,X_test,y_test,model):
+        model.fit(X_train, y_train)
+        # Make predictions
+        y_train_pred = model.predict(X_train)
+        y_test_pred = model.predict(X_test)
+        
+        # Evaluate Train and Test dataset
+        mae= mean_absolute_error(y_test, y_test_pred)
+        rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+        r2_square = r2_score(y_test, y_test_pred)
+        return mae,rmse,r2_square
+
+    def train_model(self,train_df,test_df):
         try:
-            logging.info("Split train_array data into Train and Test.")
+            logging.info("Split data into Train and Test.")
             X_train, y_train, X_test, y_test = (
-                train_array[:,:-1],
-                train_array[:,-1],
-                test_array[:,:-1],
-                test_array[:,-1]
+                train_df.drop("Rented Bike Count",axis=1),
+                train_df.iloc[:, 0],
+                test_df.drop("Rented Bike Count",axis=1),
+                test_df.iloc[:, 0]
             )
 
             models = {
@@ -69,10 +81,13 @@ class ModelTrainer:
                 obj=best_model
             )
 
-            predicted=best_model.predict(X_test)
-            r2 = r2_score(y_test,predicted)
+        
+            mae,rmse,r2_square=self.best_model(X_train,y_train,X_test,y_test,best_model)
 
-            return r2,best_model_name
+            # predicted=best_model.predict(X_test)
+            # r2 = r2_score(y_test,predicted)
+
+            return best_model_name,mae,rmse,r2_square
 
         except Exception as e:
             raise CustomException(e,sys)

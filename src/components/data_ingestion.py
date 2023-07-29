@@ -54,9 +54,9 @@ if __name__=="__main__":
     train_data,test_data=obj.initiate_data_ingestion()
 
     data_transform=DataTransformer()
-    train_array,test_array,_=data_transform.initiate_data_transformation(train_data,test_data)
+    train_df,test_df=data_transform.initiate_data_transformation(train_data,test_data)
 
     modeltrain=ModelTrainer()
-    print(modeltrain.train_model(train_array,test_array))
+    print(modeltrain.train_model(train_df,test_df))
 
             
