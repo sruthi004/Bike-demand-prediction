@@ -5,5 +5,7 @@ matplotlib
 statistics
 scikit-learn
 dill
+catboost
+xgboost
 
 -e .
