@@ -28,7 +28,10 @@ class DataTransformer:
             df['Date'] = pd.to_datetime(df["Date"].iloc[0:], format='%d/%m/%Y') # Converts values into timestamp.
             df['Month'] = pd.DatetimeIndex(df['Date']).month
             df.drop('Date',axis=1,inplace=True)
-            
+
+            # Renaming some columns.
+            df.rename(columns = {'Temperature(°C)':'Temperature','Humidity(%)':'Humidity','Wind speed (m/s)':'Wind_speed','Visibility (10m)':'Visibility','Dew point temperature(°C)':'Dew_point_temperature','Solar Radiation (MJ/m2)':'Solar_Radiation','Rainfall(mm)':'Rainfall','Snowfall (cm)':'Snowfall','Functioning Day':'Functioning_Day'}, inplace = True)
+
             # Label encoder and get dummies
             cat_feat = df.loc[:,['Seasons','Holiday', 'Functioning Day']]
             cat = pd.get_dummies(df.loc[:,['Holiday', 'Functioning Day']])

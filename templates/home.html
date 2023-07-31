@@ -1,0 +1,24 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Bike Requirement Predictor</h1>
+   
+       <form action="{{ url_for('predict')}}" method="POST">
+        <h1>
+            <legend>Prediction for number of bikes required.</legend>
+        </h1>
+        
+        <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input class="form-control" type="datetime-local" name="Date" id="Test_DatetimeLocal"
+                placeholder="Select your date" >
+        
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict number of bikes required" required />
+        </div>
+    </form>
+    <h2>
+       Number of bikes needed: {{results}} 
+    </h2>
+   <body>
+</html>
