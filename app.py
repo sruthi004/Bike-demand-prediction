@@ -1,10 +1,10 @@
-from flask import flash,request,render_template
+from flask import Flask,request,render_template
 import pandas as pd
 import numpy as np
 
 from src.pipeline.predict_pipeline import CustomDataClass,Predict_pipline
 
-application=flask(__name__) # Entry point for the app
+application=Flask(__name__) # Entry point for the app
 app=application
 
 # Route for a home page
@@ -37,7 +37,7 @@ def predict_data():
 
         predict_pipline=Predict_pipline()
         results=predict_pipline.predict(pred_df)
-        return render_template('home.html',results=results[0])
+        return render_template('home.html',results=round(results[0]))
     
 if __name__=='__main__':
     app.run(host="0.0.0.0",debug=True)

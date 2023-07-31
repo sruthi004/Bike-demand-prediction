@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 
-from src.exception import Customexception
+from src.exception import CustomException
 from src.components.data_transformation import DataTransformer
 from src.utils import load_object
 
@@ -16,11 +16,11 @@ class Predict_pipline:
             model_path='artifacts/model.pkl'
             model=load_object(model_path)
             tranform=DataTransformer()
-            scaled_data=tranform(features)
+            scaled_data=tranform.transformations(features)
             preds=model.predict(scaled_data)
             return preds
         except Exception as e:
-            raise Customexception(e,sys)
+            raise CustomException(e,sys)
 class CustomDataClass:
     def __init__(self,Date,Hour,Temperature,Humidity,Wind_speed,Visibility,Dew_point_temperature,Solar_Radiation,
                  Rainfall,Snowfall,Seasons,Holiday,Functioning_Day):
@@ -57,4 +57,4 @@ class CustomDataClass:
             }
             return pd.DataFrame(custom_data_input_dict)
         except Exception as e:
-            raise Customexception(e,sys)
+            raise CustomException(e,sys)

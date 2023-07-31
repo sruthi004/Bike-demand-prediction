@@ -59,7 +59,7 @@ class ModelTrainer:
                 "Decision Tree": DecisionTreeRegressor(),
                 "Random Forest Regressor": RandomForestRegressor(),
                 #"XGBRegressor": XGBRegressor(), 
-                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                #"CatBoosting Regressor": CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor(),
                 #"Gradient Boosting": GradientBoostingRregressor()
             }

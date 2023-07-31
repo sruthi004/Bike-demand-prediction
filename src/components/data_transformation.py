@@ -33,11 +33,11 @@ class DataTransformer:
             df.rename(columns = {'Temperature(°C)':'Temperature','Humidity(%)':'Humidity','Wind speed (m/s)':'Wind_speed','Visibility (10m)':'Visibility','Dew point temperature(°C)':'Dew_point_temperature','Solar Radiation (MJ/m2)':'Solar_Radiation','Rainfall(mm)':'Rainfall','Snowfall (cm)':'Snowfall','Functioning Day':'Functioning_Day'}, inplace = True)
 
             # Label encoder and get dummies
-            cat_feat = df.loc[:,['Seasons','Holiday', 'Functioning Day']]
-            cat = pd.get_dummies(df.loc[:,['Holiday', 'Functioning Day']])
+            cat_feat = df.loc[:,['Seasons','Holiday', 'Functioning_Day']]
+            cat = pd.get_dummies(df.loc[:,['Holiday', 'Functioning_Day']])
 
             df['Holiday'] = cat['Holiday_Holiday'] # 0 Not a Holiday, 1 means Holiday
-            df['Functioning Day'] = cat['Functioning Day_Yes'] # 1 is Yes, 0 is No
+            df['Functioning_Day'] = cat['Functioning_Day_Yes'] # 1 is Yes, 0 is No
 
             lbl = LabelEncoder()
             df['Seasons'] = lbl.fit_transform(df['Seasons'])

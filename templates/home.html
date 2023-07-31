@@ -3,16 +3,103 @@
     <div class="login">
        <h1>Bike Requirement Predictor</h1>
    
-       <form action="{{ url_for('predict')}}" method="POST">
+       <form action="{{ url_for('predict_data')}}" method="POST">
         <h1>
             <legend>Prediction for number of bikes required.</legend>
         </h1>
         
         <div class="mb-3">
             <label class="form-label">Date</label>
-            <input class="form-control" type="datetime-local" name="Date" id="Test_DatetimeLocal"
-                placeholder="Select your date" >
-        
+            <input class="form-control"  name="Date" 
+                placeholder="Enter the date(dd/mm/YYYY)" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Hour</label>
+            <input class="form-control" type="number" name="Hour"
+                placeholder="Enter the Hour" min='0' max='23' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Temperature</label>
+            <input class="form-control" type="number" step="any" name="Temperature"
+                placeholder="Enter the Temperature in °C" min='-10' max='45' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Humidity</label>
+            <input class="form-control" type="number" step="any" name="Humidity"
+                placeholder="Enter the Humidity in %" min='1' max='100' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Wind_speed</label>
+            <input class="form-control" type="number" step="any" name="Wind_speed"
+                placeholder="Enter the Wind Speed in m/s" min='1' max='10' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Visibility</label>
+            <input class="form-control" type="number" step="any" name="Visibility"
+                placeholder="Enter the Visibility in 10m" min='20' max='2500' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dew_point_temperature</label>
+            <input class="form-control" type="number" step="any" name="Dew_point_temperature"
+                placeholder="Enter the Dew point temperature in °C" min='-20' max='30' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Solar_Radiation</label>
+            <input class="form-control" type="number" step="any" name="Solar_Radiation"
+                placeholder="Enter the Solar Radiation in MJ/m2" min='0' max='4' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Rainfall</label>
+            <input class="form-control" type="number" step="any" name="Rainfall"
+                placeholder="Enter the Rainfall in mm" min='0' max='35' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Snowfall</label>
+            <input class="form-control" type="number" step="any" name="Snowfall"
+                placeholder="Enter the Snowfall in cm" min='0' max='10' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Seasons</label>
+            <select class="form-control" name="Seasons" placeholder="Enter you season" required>
+                <option class="placeholder" selected disabled value="">Select Seasons</option>
+                <option value="Winter">
+                    Winter
+                </option>
+                <option value="Spring">
+                    Spring
+                </option>
+                <option value="Summer">
+                    Summer
+                </option>
+                <option value="Autumn">
+                    Autumn
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Holiday</label>
+            <select class="form-control" name="Holiday" placeholder="Enter if it is a Holiday" required>
+                <option class="placeholder" selected disabled value="">Select Holiday</option>
+                <option value="Holiday">
+                    Holiday
+                </option>
+                <option value="No Holiday">
+                    No Holiday
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Functioning_Day</label>
+            <select class="form-control" name="Functioning_Day" placeholder="Enter if it is a Functioning day" required>
+                <option class="placeholder" selected disabled value="">Choose an option</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+            </select>
+        </div>
         <div class="mb-3">
             <input class="btn btn-primary" type="submit" value="Predict number of bikes required" required />
         </div>
