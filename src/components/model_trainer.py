@@ -15,7 +15,6 @@ from sklearn.linear_model import LinearRegression, Ridge,Lasso
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.model_selection import RandomizedSearchCV
 from catboost import CatBoostRegressor
-#from xgboost import XGBRegressor
 
 from src.exception import CustomException
 from src.logger import logging
@@ -57,11 +56,9 @@ class ModelTrainer:
                 "Ridge": Ridge(),
                 "K-Neighbors Regressor": KNeighborsRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
-                "Random Forest Regressor": RandomForestRegressor(),
-                #"XGBRegressor": XGBRegressor(), 
-                #"CatBoosting Regressor": CatBoostRegressor(verbose=False),
-                "AdaBoost Regressor": AdaBoostRegressor(),
-                #"Gradient Boosting": GradientBoostingRregressor()
+                "Random Forest Regressor": RandomForestRegressor(), 
+                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                "AdaBoost Regressor": AdaBoostRegressor()
             }
 
             model_report:dict=evaluate_models(X_train,y_train,X_test,y_test,models)
